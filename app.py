@@ -1,3 +1,18 @@
+import streamlit as st
+import os
+import time
+import g4f
+from groq import Groq
+import google.generativeai as genai
+from concurrent.futures import ThreadPoolExecutor
+
+# --- PAGE CONFIG (Must be first) ---
+st.set_page_config(
+    page_title="LLM Council",
+    page_icon="🧙‍♂️",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
 # --- PASSWORD PROTECTION ---
 def check_password():
     """Returns `True` if the user had the correct password."""
@@ -30,21 +45,6 @@ def check_password():
 if not check_password():
     st.stop()  # Do not run the rest of the app if password is wrong
 
-import streamlit as st
-import os
-import time
-import g4f
-from groq import Groq
-import google.generativeai as genai
-from concurrent.futures import ThreadPoolExecutor
-
-# --- PAGE CONFIG (Must be first) ---
-st.set_page_config(
-    page_title="LLM Council",
-    page_icon="🧙‍♂️",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
 
 # --- CSS STYLING (The "Polish") ---
 st.markdown("""
